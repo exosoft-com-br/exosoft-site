@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <defs>
+    <!-- Brilho azul central -->
+    <radialGradient id="glowBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#1E40AF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gradiente metálico das peças do X -->
+    <linearGradient id="metalTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8D8F0"/>
+      <stop offset="40%" stop-color="#7A9EC8"/>
+      <stop offset="100%" stop-color="#1E3A6E"/>
+    </linearGradient>
+    <linearGradient id="metalLeft" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B0C8E8"/>
+      <stop offset="50%" stop-color="#5E84B8"/>
+      <stop offset="100%" stop-color="#162E5A"/>
+    </linearGradient>
+    <linearGradient id="metalRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D8E8FF"/>
+      <stop offset="50%" stop-color="#6A90C8"/>
+      <stop offset="100%" stop-color="#1A3260"/>
+    </linearGradient>
+    <linearGradient id="metalBottom" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3A6E"/>
+      <stop offset="50%" stop-color="#5A7EAE"/>
+      <stop offset="100%" stop-color="#B8D0EC"/>
+    </linearGradient>
+    <!-- Gradiente edge neon azul -->
+    <linearGradient id="neonEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+    <!-- Gradiente laranja -->
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA040"/>
+      <stop offset="100%" stop-color="#E05000"/>
+    </linearGradient>
+    <!-- Brilho neon blur -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="outerGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="xClip">
+      <polygon points="250,30 470,250 250,470 30,250"/>
+    </clipPath>
+  </defs>
+
+  <!-- Halo externo -->
+  <ellipse cx="250" cy="250" rx="230" ry="230" fill="url(#glowBg)"/>
+
+  <!-- Anel neon externo -->
+  <circle cx="250" cy="250" r="210" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.5" fill="none" filter="url(#neonGlow)"/>
+  <circle cx="250" cy="250" r="195" stroke="#38BDF8" stroke-width="0.7" stroke-opacity="0.3" fill="none"/>
+
+  <!-- === PEÇA SUPERIOR-ESQUERDA (braço top-left do X) === -->
+  <polygon points="100,80 250,60 215,190 80,200" fill="url(#metalTop)" stroke="#38BDF8" stroke-width="1.8" filter="url(#neonGlow)"/>
+  <!-- face interior escura -->
+  <polygon points="215,190 240,200 200,215 175,200" fill="#0A1830" stroke="#38BDF8" stroke-width="1"/>
+  <!-- linhas de circuito -->
+  <line x1="140" y1="100" x2="195" y2="175" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="160" y1="95" x2="205" y2="172" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.3"/>
+  <circle cx="155" cy="105" r="3" fill="#38BDF8" opacity="0.7"/>
+  <circle cx="180" cy="140" r="2" fill="#38BDF8" opacity="0.5"/>
+
+  <!-- === PEÇA SUPERIOR-DIREITA (braço top-right do X) === -->
+  <polygon points="250,60 400,80 420,200 285,190" fill="url(#metalRight)" stroke="#38BDF8" stroke-width="1.8" filter="url(#neonGlow)"/>
+  <polygon points="285,190 300,215 260,200 250,185" fill="#0A1830" stroke="#38BDF8" stroke-width="1"/>
+  <line x1="360" y1="100" x2="305" y2="175" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="340" y1="95" x2="295" y2="172" stroke="#38BDF8" stroke-width="0.5" stroke-opacity="0.3"/>
+  <circle cx="345" cy="105" r="3" fill="#38BDF8" opacity="0.7"/>
+  <circle cx="320" cy="140" r="2" fill="#38BDF8" opacity="0.5"/>
+
+  <!-- === PEÇA INFERIOR-ESQUERDA === -->
+  <polygon points="80,300 215,310 240,440 100,420" fill="url(#metalLeft)" stroke="#38BDF8" stroke-width="1.8" filter="url(#neonGlow)"/>
+  <polygon points="215,310 240,295 260,310 245,330" fill="#0A1830" stroke="#38BDF8" stroke-width="1"/>
+  <line x1="130" y1="400" x2="205" y2="330" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+  <circle cx="145" cy="390" r="3" fill="#38BDF8" opacity="0.7"/>
+
+  <!-- === PEÇA INFERIOR-DIREITA === -->
+  <polygon points="285,310 420,300 400,420 260,440" fill="url(#metalBottom)" stroke="#38BDF8" stroke-width="1.8" filter="url(#neonGlow)"/>
+  <polygon points="255,330 270,310 295,310 280,330" fill="#0A1830" stroke="#38BDF8" stroke-width="1"/>
+  <line x1="370" y1="400" x2="295" y2="330" stroke="#38BDF8" stroke-width="0.8" stroke-opacity="0.5"/>
+  <circle cx="355" cy="390" r="3" fill="#38BDF8" opacity="0.7"/>
+
+  <!-- === CRUZAMENTO CENTRAL (núcleo escuro do X) === -->
+  <polygon points="215,190 285,190 310,250 285,310 215,310 190,250" fill="#060D1C" stroke="#38BDF8" stroke-width="1.5"/>
+
+  <!-- Brilho central -->
+  <ellipse cx="250" cy="250" rx="45" ry="45" fill="#38BDF8" fill-opacity="0.08"/>
+  <ellipse cx="250" cy="250" rx="25" ry="25" fill="#38BDF8" fill-opacity="0.12"/>
+
+  <!-- Binary code texto (decorativo) -->
+  <text x="225" y="235" font-family="monospace" font-size="7" fill="#38BDF8" opacity="0.4">10110010</text>
+  <text x="225" y="248" font-family="monospace" font-size="7" fill="#38BDF8" opacity="0.3">01001101</text>
+  <text x="225" y="261" font-family="monospace" font-size="7" fill="#38BDF8" opacity="0.4">11010010</text>
+
+  <!-- === SETAS LARANJA — 4 pontas do X === -->
+  <!-- TOPO -->
+  <polygon points="250,72 263,105 250,98 237,105" fill="url(#orangeGrad)" filter="url(#softGlow)"/>
+  <!-- BAIXO -->
+  <polygon points="250,428 237,395 250,402 263,395" fill="url(#orangeGrad)" filter="url(#softGlow)"/>
+  <!-- ESQUERDA -->
+  <polygon points="72,250 105,237 98,250 105,263" fill="url(#orangeGrad)" filter="url(#softGlow)"/>
+  <!-- DIREITA -->
+  <polygon points="428,250 395,263 402,250 395,237" fill="url(#orangeGrad)" filter="url(#softGlow)"/>
+
+  <!-- Chevrons duplos -->
+  <!-- top inner -->
+  <polyline points="243,118 250,110 257,118" stroke="#FFA040" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- bottom inner -->
+  <polyline points="243,382 250,390 257,382" stroke="#FFA040" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- left inner -->
+  <polyline points="118,243 110,250 118,257" stroke="#FFA040" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- right inner -->
+  <polyline points="382,243 390,250 382,257" stroke="#FFA040" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bordas neon superiores vívidas -->
+  <line x1="100" y1="80" x2="250" y2="60" stroke="#38BDF8" stroke-width="2.5" filter="url(#softGlow)" stroke-opacity="0.9"/>
+  <line x1="250" y1="60" x2="400" y2="80" stroke="#38BDF8" stroke-width="2.5" filter="url(#softGlow)" stroke-opacity="0.9"/>
+  <line x1="80" y1="300" x2="100" y2="420" stroke="#38BDF8" stroke-width="2" filter="url(#neonGlow)" stroke-opacity="0.7"/>
+  <line x1="400" y1="420" x2="420" y2="300" stroke="#38BDF8" stroke-width="2" filter="url(#neonGlow)" stroke-opacity="0.7"/>
+</svg>
