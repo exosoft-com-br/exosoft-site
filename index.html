@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO META TAGS ===== -->
+  <title>Exosoft — Fábrica de Software | Desenvolvimento Web, Mobile e Cloud</title>
+  <meta name="description" content="A Exosoft é uma fábrica de software brasileira especializada em desenvolvimento web, aplicativos mobile, APIs, Cloud e consultoria de TI. Transformamos ideias em software de alto impacto." />
+  <meta name="keywords" content="fábrica de software, desenvolvimento web, aplicativos mobile, API, DevOps, cloud, consultoria TI, Brasil" />
+  <meta name="author" content="Exosoft" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://exosoft.com.br/" />
+
+  <!-- ===== OPEN GRAPH / SOCIAL ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://exosoft.com.br/" />
+  <meta property="og:title" content="Exosoft — Fábrica de Software de Alto Impacto" />
+  <meta property="og:description" content="Desenvolvemos soluções digitais sob medida para empresas que querem crescer com tecnologia." />
+  <meta property="og:image" content="https://exosoft.com.br/og-image.png" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Exosoft — Fábrica de Software" />
+  <meta name="twitter:description" content="Transformamos ideias em software de alto impacto." />
+
+  <!-- ===== GOOGLE FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ===== TAILWIND CSS CDN ===== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ===== AOS – Animate On Scroll ===== -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- ===== FONT AWESOME ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- ===== TAILWIND CONFIG ===== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:   '#0F172A',
+            secondary: '#1E40AF',
+            accent:    '#38BDF8',
+            altbg:     '#0F1F3D',
+            textlight: '#F1F5F9',
+            textsec:   '#94A3B8',
+          },
+          fontFamily: {
+            sans:     ['Inter', 'sans-serif'],
+            heading:  ['Space Grotesk', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ===== ESTILOS GLOBAIS ===== -->
+  <style>
+    /* --- Base --- */
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0F172A;
+      color: #F1F5F9;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+    /* --- Scrollbar personalizada --- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0F172A; }
+    ::-webkit-scrollbar-thumb { background: #1E40AF; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
+
+    /* ==========================================
+       NAVBAR
+    ========================================== */
+    #navbar {
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(15, 23, 42, 0.95) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+
+    /* ==========================================
+       HERO — GRID ANIMADO
+    ========================================== */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0%   { background-position: 0 0; }
+      100% { background-position: 48px 48px; }
+    }
+
+    /* Pontos brilhantes aleatórios */
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.15;
+      animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50%       { transform: scale(1.2); opacity: 0.25; }
+    }
+
+    /* ==========================================
+       TYPEWRITER
+    ========================================== */
+    .code-window {
+      background: #0D1117;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      overflow: hidden;
+    }
+    .code-window .titlebar {
+      background: #161B22;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red    { background: #FF5F57; }
+    .dot-yellow { background: #FEBC2E; }
+    .dot-green  { background: #28C840; }
+    .code-body { padding: 20px 24px; }
+    .line-num { color: #484F58; user-select: none; margin-right: 18px; width: 20px; display: inline-block; text-align: right; }
+    .kw  { color: #FF7B72; }
+    .fn  { color: #D2A8FF; }
+    .str { color: #A5D6FF; }
+    .val { color: #79C0FF; }
+    .cm  { color: #8B949E; }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: #38BDF8;
+      vertical-align: text-bottom;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ==========================================
+       BADGE FLUTUANTE
+    ========================================== */
+    .badge-float {
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* ==========================================
+       CARDS DE SERVIÇO
+    ========================================== */
+    .service-card {
+      background: linear-gradient(135deg, #131E3A 0%, #0F1830 100%);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      transition: all 0.35s ease;
+    }
+    .service-card:hover {
+      border-color: #38BDF8;
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.12);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.15) rotate(-5deg);
+      color: #38BDF8;
+    }
+    .service-icon { transition: transform 0.3s ease, color 0.3s ease; }
+
+    /* ==========================================
+       DIFFERENTIALS
+    ========================================== */
+    .diff-card {
+      background: rgba(30, 64, 175, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      transition: all 0.3s ease;
+    }
+    .diff-card:hover {
+      background: rgba(30, 64, 175, 0.18);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-4px);
+    }
+
+    /* ==========================================
+       PORTFOLIO CARDS
+    ========================================== */
+    .portfolio-card {
+      background: #131E3A;
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      transition: all 0.35s ease;
+      overflow: hidden;
+    }
+    .portfolio-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .portfolio-card .overlay {
+      background: linear-gradient(0deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.4) 60%, transparent 100%);
+    }
+
+    /* ==========================================
+       MARQUEE DE TECNOLOGIAS
+    ========================================== */
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      white-space: nowrap;
+      color: #94A3B8;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .tech-item:hover { color: #38BDF8; }
+
+    /* ==========================================
+       FORMULÁRIO
+    ========================================== */
+    .form-input {
+      background: rgba(30, 64, 175, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #F1F5F9;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: #38BDF8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+    }
+    .form-input::placeholder { color: #64748B; }
+    .form-input option { background: #0F172A; color: #F1F5F9; }
+
+    /* ==========================================
+       BOTÕES
+    ========================================== */
+    .btn-primary {
+      background: linear-gradient(135deg, #1E40AF 0%, #38BDF8 100%);
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(56,189,248,0.35); }
+
+    .btn-outline {
+      border: 2px solid #38BDF8;
+      color: #38BDF8;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(56, 189, 248, 0.12);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================
+       SECTION TITLES
+    ========================================== */
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #38BDF8;
+    }
+
+    /* ==========================================
+       COUNTUP
+    ========================================== */
+    .stat-card {
+      background: linear-gradient(135deg, rgba(30,64,175,0.2) 0%, rgba(56,189,248,0.08) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      transition: transform 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    .footer-link {
+      color: #94A3B8;
+      transition: color 0.25s;
+      font-size: 0.9rem;
+    }
+    .footer-link:hover { color: #38BDF8; }
+
+    /* ==========================================
+       TOAST NOTIFICATION
+    ========================================== */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+    #toast.success { background: #064E3B; border: 1px solid #059669; color: #6EE7B7; }
+    #toast.error   { background: #7F1D1D; border: 1px solid #DC2626; color: #FCA5A5; }
+
+    /* ==========================================
+       MOBILE MENU
+    ========================================== */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    #mobile-menu.open { max-height: 400px; }
+
+    /* gradiente hero */
+    .hero-gradient {
+      background: radial-gradient(ellipse at 60% 50%, rgba(30,64,175,0.35) 0%, transparent 65%),
+                  radial-gradient(ellipse at 10% 80%, rgba(56,189,248,0.12) 0%, transparent 50%),
+                  #0F172A;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ====================================================
+     NAVBAR
+===================================================== -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-18">
+
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-2 group" aria-label="Exosoft - ir para início">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white font-bold text-sm font-heading shadow-lg group-hover:scale-110 transition-transform">
+          <span>&lt;/&gt;</span>
+        </div>
+        <span class="text-xl font-bold font-heading text-textlight tracking-tight">
+          Exo<span class="text-accent">soft</span>
+        </span>
+      </a>
+
+      <!-- Nav Desktop -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Navegação principal">
+        <a href="#inicio"       class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Início</a>
+        <a href="#sobre"        class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Sobre</a>
+        <a href="#servicos"     class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Serviços</a>
+        <a href="#diferenciais" class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Diferenciais</a>
+        <a href="#portfolio"    class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Portfólio</a>
+        <a href="#contato"      class="px-4 py-2 text-sm font-medium text-textsec hover:text-accent rounded-lg hover:bg-white/5 transition-all">Contato</a>
+      </nav>
+
+      <!-- CTA Desktop -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="#contato" class="btn-primary px-5 py-2.5 rounded-lg text-sm">
+          Fale Conosco
+        </a>
+      </div>
+
+      <!-- Hamburger Mobile -->
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="ham-line w-6 h-0.5 bg-textlight transition-all origin-center"></span>
+        <span class="ham-line w-6 h-0.5 bg-textlight transition-all origin-center"></span>
+        <span class="ham-line w-6 h-0.5 bg-textlight transition-all origin-center"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" aria-label="Navegação mobile">
+      <div class="flex flex-col gap-1 pb-4 border-t border-white/10 pt-4">
+        <a href="#inicio"       class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Início</a>
+        <a href="#sobre"        class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Sobre</a>
+        <a href="#servicos"     class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Serviços</a>
+        <a href="#diferenciais" class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Diferenciais</a>
+        <a href="#portfolio"    class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Portfólio</a>
+        <a href="#contato"      class="px-4 py-3 text-sm font-medium text-textsec hover:text-accent hover:bg-white/5 rounded-lg transition-all mobile-link">Contato</a>
+        <a href="#contato" class="btn-primary mt-2 px-5 py-3 rounded-lg text-sm text-center mobile-link">Fale Conosco</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ====================================================
+     HERO SECTION
+===================================================== -->
+<section id="inicio" class="relative min-h-screen flex items-center hero-gradient overflow-hidden pt-16">
+
+  <!-- Grid animado de fundo -->
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <!-- Brilhos decorativos -->
+  <div class="hero-glow w-96 h-96 bg-secondary" style="top:10%;left:60%;" aria-hidden="true"></div>
+  <div class="hero-glow w-72 h-72 bg-accent" style="bottom:15%;left:5%;animation-delay:3s;" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- Conteúdo texto -->
+    <div data-aos="fade-right" data-aos-duration="900">
+
+      <!-- Badge flutuante -->
+      <div class="badge-float inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-2 text-sm font-semibold text-accent mb-8">
+        🚀 <span>+50 projetos entregues</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-textlight leading-tight mb-6">
+        Transformamos <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">ideias em software</span><br/>
+        de alto impacto
+      </h1>
+
+      <p class="text-lg text-textsec max-w-lg mb-10 leading-relaxed">
+        Desenvolvemos soluções digitais sob medida para empresas que querem crescer com tecnologia.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contato" class="btn-primary px-8 py-4 rounded-xl text-base text-center">
+          <i class="fa-solid fa-paper-plane mr-2"></i>Solicitar Orçamento
+        </a>
+        <a href="#servicos" class="btn-outline px-8 py-4 rounded-xl text-base text-center">
+          Conheça nossos serviços <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+        </a>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="flex flex-wrap items-center gap-6 mt-12">
+        <div class="flex items-center gap-2 text-textsec text-sm">
+          <i class="fa-solid fa-check-circle text-accent"></i> Metodologia Ágil
+        </div>
+        <div class="flex items-center gap-2 text-textsec text-sm">
+          <i class="fa-solid fa-check-circle text-accent"></i> Time Sênior
+        </div>
+        <div class="flex items-center gap-2 text-textsec text-sm">
+          <i class="fa-solid fa-check-circle text-accent"></i> Suporte Dedicado
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Window — Typewriter -->
+    <div data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+      <div class="code-window shadow-2xl shadow-black/50">
+        <div class="titlebar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="ml-4 text-xs text-gray-500">exosoft_project.ts</span>
+        </div>
+        <div class="code-body text-xs sm:text-sm">
+          <div class="mb-1"><span class="line-num">1</span><span class="cm">// Exosoft — Fábrica de Software</span></div>
+          <div class="mb-1"><span class="line-num">2</span></div>
+          <div class="mb-1"><span class="line-num">3</span><span class="kw">import</span> <span class="val">{ Exosoft }</span> <span class="kw">from</span> <span class="str">'@exosoft/core'</span>;</div>
+          <div class="mb-1"><span class="line-num">4</span></div>
+          <div class="mb-1"><span class="line-num">5</span><span class="kw">const</span> <span class="val">project</span> <span class="kw">=</span> <span class="kw">new</span> <span class="fn">Exosoft</span><span class="val">(</span><span class="val">{</span></div>
+          <div class="mb-1"><span class="line-num">6</span>&nbsp;&nbsp;<span class="val">type</span><span class="kw">:</span> <span class="str" id="typewriter-text">"<span id="tw-content"></span><span class="cursor"></span>"</span>,</div>
+          <div class="mb-1"><span class="line-num">7</span>&nbsp;&nbsp;<span class="val">quality</span><span class="kw">:</span> <span class="str">"enterprise"</span>,</div>
+          <div class="mb-1"><span class="line-num">8</span>&nbsp;&nbsp;<span class="val">delivery</span><span class="kw">:</span> <span class="str">"on-time"</span>,</div>
+          <div class="mb-1"><span class="line-num">9</span>&nbsp;&nbsp;<span class="val">team</span><span class="kw">:</span> <span class="str">"senior-devs"</span>,</div>
+          <div class="mb-1"><span class="line-num">10</span><span class="val">}</span><span class="val">)</span>;</div>
+          <div class="mb-1"><span class="line-num">11</span></div>
+          <div class="mb-1"><span class="line-num">12</span><span class="kw">await</span> project.<span class="fn">build</span><span class="val">()</span>;</div>
+          <div class="mb-1"><span class="line-num">13</span><span class="cm">// ✅ Projeto entregue com sucesso!</span></div>
+        </div>
+      </div>
+
+      <!-- Mini stats abaixo do card -->
+      <div class="grid grid-cols-3 gap-3 mt-4">
+        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+          <div class="text-accent font-bold text-xl font-heading">+50</div>
+          <div class="text-textsec text-xs mt-1">Projetos</div>
+        </div>
+        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+          <div class="text-accent font-bold text-xl font-heading">+30</div>
+          <div class="text-textsec text-xs mt-1">Clientes</div>
+        </div>
+        <div class="bg-white/5 rounded-xl p-4 text-center border border-white/10">
+          <div class="text-accent font-bold text-xl font-heading">+5</div>
+          <div class="text-textsec text-xs mt-1">Anos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seta 'scroll down' -->
+  <a href="#sobre" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-textsec hover:text-accent transition-colors" aria-label="Ir para próxima seção">
+    <i class="fa-solid fa-chevron-down text-xl animate-bounce"></i>
+  </a>
+</section>
+
+
+<!-- ====================================================
+     SOBRE NÓS
+===================================================== -->
+<section id="sobre" class="py-24 px-6 lg:px-8 bg-primary">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Texto -->
+      <div data-aos="fade-right">
+        <p class="section-tag mb-3">Quem somos</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-textlight mb-6 leading-tight">
+          Uma equipe apaixonada<br/>por <span class="text-accent">tecnologia</span>
+        </h2>
+        <p class="text-textsec text-lg leading-relaxed mb-8">
+          A <strong class="text-textlight">Exosoft</strong> é uma fábrica de software focada em entregar soluções digitais de alta qualidade. Combinamos metodologias ágeis, boas práticas de engenharia e um time apaixonado por tecnologia para transformar os desafios dos nossos clientes em produtos digitais de sucesso.
+        </p>
+        <p class="text-textsec leading-relaxed mb-10">
+          Acreditamos que bom software não é apenas sobre código limpo — é sobre entender profundamente o problema do cliente e construir a solução certa, com excelência técnica e foco total em resultado.
+        </p>
+        <a href="#contato" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl">
+          <i class="fa-solid fa-handshake"></i> Vamos trabalhar juntos
+        </a>
+      </div>
+
+      <!-- Cards de números + SVG -->
+      <div data-aos="fade-left" data-aos-delay="150">
+
+        <!-- Ilustração SVG -->
+        <div class="relative mb-10">
+          <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" aria-hidden="true">
+            <!-- fundo card -->
+            <rect x="20" y="20" width="440" height="240" rx="18" fill="#131E3A" stroke="rgba(56,189,248,0.2)" stroke-width="1.2"/>
+            <!-- barra de topo -->
+            <rect x="20" y="20" width="440" height="44" rx="18" fill="#0F1830"/>
+            <rect x="20" y="46" width="440" height="18" fill="#0F1830"/>
+            <!-- dots -->
+            <circle cx="50" cy="42" r="7" fill="#FF5F57"/>
+            <circle cx="72" cy="42" r="7" fill="#FEBC2E"/>
+            <circle cx="94" cy="42" r="7" fill="#28C840"/>
+            <!-- linhas de código -->
+            <rect x="44" y="84" width="60" height="10" rx="3" fill="#FF7B72" opacity=".85"/>
+            <rect x="116" y="84" width="140" height="10" rx="3" fill="#D2A8FF" opacity=".75"/>
+            <rect x="44" y="108" width="40" height="10" rx="3" fill="#38BDF8" opacity=".85"/>
+            <rect x="96" y="108" width="80" height="10" rx="3" fill="#A5D6FF" opacity=".6"/>
+            <rect x="44" y="132" width="50" height="10" rx="3" fill="#FF7B72" opacity=".85"/>
+            <rect x="106" y="132" width="60" height="10" rx="3" fill="#79C0FF" opacity=".7"/>
+            <rect x="178" y="132" width="90" height="10" rx="3" fill="#A5D6FF" opacity=".55"/>
+            <rect x="44" y="156" width="35" height="10" rx="3" fill="#8B949E" opacity=".6"/>
+            <rect x="91" y="156" width="120" height="10" rx="3" fill="#8B949E" opacity=".4"/>
+            <rect x="44" y="180" width="55" height="10" rx="3" fill="#38BDF8" opacity=".8"/>
+            <rect x="111" y="180" width="75" height="10" rx="3" fill="#D2A8FF" opacity=".65"/>
+            <rect x="44" y="204" width="40" height="10" rx="3" fill="#FF7B72" opacity=".7"/>
+            <!-- cursor -->
+            <rect x="44" y="228" width="3" height="14" rx="1" fill="#38BDF8">
+              <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+            </rect>
+            <!-- badge verde -->
+            <rect x="320" y="80" width="120" height="32" rx="8" fill="rgba(40,200,64,0.15)" stroke="rgba(40,200,64,0.4)" stroke-width="1"/>
+            <text x="332" y="101" font-size="12" fill="#4ADE80" font-family="monospace">✓ Build passed</text>
+            <!-- badge azul -->
+            <rect x="320" y="124" width="120" height="32" rx="8" fill="rgba(56,189,248,0.12)" stroke="rgba(56,189,248,0.35)" stroke-width="1"/>
+            <text x="332" y="145" font-size="12" fill="#38BDF8" font-family="monospace">⚡ Deployed</text>
+          </svg>
+        </div>
+
+        <!-- Stats countup -->
+        <div class="grid grid-cols-3 gap-4" id="stats-section">
+          <div class="stat-card rounded-2xl p-6 text-center">
+            <div class="text-4xl font-extrabold text-accent font-heading mb-1">
+              +<span class="countup" data-target="50">0</span>
+            </div>
+            <div class="text-textsec text-sm font-medium">Projetos</div>
+          </div>
+          <div class="stat-card rounded-2xl p-6 text-center">
+            <div class="text-4xl font-extrabold text-accent font-heading mb-1">
+              +<span class="countup" data-target="30">0</span>
+            </div>
+            <div class="text-textsec text-sm font-medium">Clientes</div>
+          </div>
+          <div class="stat-card rounded-2xl p-6 text-center">
+            <div class="text-4xl font-extrabold text-accent font-heading mb-1">
+              +<span class="countup" data-target="5">0</span>
+            </div>
+            <div class="text-textsec text-sm font-medium">Anos de experiência</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     SERVIÇOS
+===================================================== -->
+<section id="servicos" class="py-24 px-6 lg:px-8" style="background: linear-gradient(180deg, #0F172A 0%, #0A1628 100%);">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Cabeçalho -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">O que fazemos</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-textlight mb-4">
+        Soluções completas para o<br/><span class="text-accent">seu negócio digital</span>
+      </h2>
+      <p class="text-textsec max-w-xl mx-auto text-lg">
+        Do planejamento ao deploy, entregamos software com qualidade e no prazo.
+      </p>
+    </div>
+
+    <!-- Grid de serviços -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-globe text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">Desenvolvimento Web</h3>
+        <p class="text-textsec text-sm leading-relaxed">Sites, sistemas e plataformas web responsivas e escaláveis, construídas com as melhores tecnologias do mercado.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">React</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Next.js</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Node.js</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-mobile-screen-button text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">Aplicativos Mobile</h3>
+        <p class="text-textsec text-sm leading-relaxed">Apps nativos e híbridos para iOS e Android com foco em UX, performance e alinhado às diretrizes de cada plataforma.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Flutter</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">React Native</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="160">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-plug text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">APIs &amp; Integrações</h3>
+        <p class="text-textsec text-sm leading-relaxed">Integrações entre sistemas, ERPs, CRMs e serviços externos com APIs RESTful e GraphQL seguras e bem documentadas.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">REST</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">GraphQL</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-brands fa-aws text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">Cloud &amp; DevOps</h3>
+        <p class="text-textsec text-sm leading-relaxed">Infraestrutura em nuvem, CI/CD e deploy automatizado. Mais velocidade, confiabilidade e escalabilidade para seu produto.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">AWS</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Docker</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">CI/CD</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="80">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-lightbulb text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">Consultoria de TI</h3>
+        <p class="text-textsec text-sm leading-relaxed">Diagnóstico técnico, arquitetura de software e roadmap digital. Ajudamos você a tomar as melhores decisões tecnológicas.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Arquitetura</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">Roadmap</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="service-card rounded-2xl p-8" data-aos="fade-up" data-aos-delay="160">
+        <div class="service-icon w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
+          <i class="fa-solid fa-headset text-2xl text-accent"></i>
+        </div>
+        <h3 class="text-xl font-bold font-heading text-textlight mb-3">Manutenção &amp; Suporte</h3>
+        <p class="text-textsec text-sm leading-relaxed">Suporte contínuo, monitoramento e evolução de sistemas legados. Mantemos seu produto sempre estável e atualizado.</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">24/7</span>
+          <span class="text-xs px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">SLA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     DIFERENCIAIS
+===================================================== -->
+<section id="diferenciais" class="py-24 px-6 lg:px-8" style="background-color: #0F1F3D;">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">Nosso diferencial</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-textlight mb-4">
+        Por que escolher a <span class="text-accent">Exosoft?</span>
+      </h2>
+      <p class="text-textsec max-w-xl mx-auto text-lg">
+        Mais de 5 anos construindo software que realmente resolve problemas reais.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Diff 1 -->
+      <div class="diff-card rounded-2xl p-8 text-center" data-aos="zoom-in" data-aos-delay="0">
+        <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-arrows-spin text-3xl text-accent"></i>
+        </div>
+        <h3 class="text-lg font-bold font-heading text-textlight mb-3">Metodologia Ágil</h3>
+        <p class="text-textsec text-sm leading-relaxed">Entregas rápidas com Scrum e Kanban, com total transparência no processo e comunicação constante.</p>
+      </div>
+
+      <!-- Diff 2 -->
+      <div class="diff-card rounded-2xl p-8 text-center" data-aos="zoom-in" data-aos-delay="100">
+        <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-code-branch text-3xl text-accent"></i>
+        </div>
+        <h3 class="text-lg font-bold font-heading text-textlight mb-3">Código de Qualidade</h3>
+        <p class="text-textsec text-sm leading-relaxed">Boas práticas, testes automatizados e code review rigoroso em cada projeto. Código que é fácil de manter.</p>
+      </div>
+
+      <!-- Diff 3 -->
+      <div class="diff-card rounded-2xl p-8 text-center" data-aos="zoom-in" data-aos-delay="200">
+        <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-users text-3xl text-accent"></i>
+        </div>
+        <h3 class="text-lg font-bold font-heading text-textlight mb-3">Time Especializado</h3>
+        <p class="text-textsec text-sm leading-relaxed">Desenvolvedores seniores com experiência em projetos complexos de múltiplos setores.</p>
+      </div>
+
+      <!-- Diff 4 -->
+      <div class="diff-card rounded-2xl p-8 text-center" data-aos="zoom-in" data-aos-delay="300">
+        <div class="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-chart-line text-3xl text-accent"></i>
+        </div>
+        <h3 class="text-lg font-bold font-heading text-textlight mb-3">Foco no Resultado</h3>
+        <p class="text-textsec text-sm leading-relaxed">Não entregamos apenas código, entregamos valor real para o seu negócio. Seu sucesso é o nosso sucesso.</p>
+      </div>
+
+    </div>
+
+    <!-- Barra de CTA central -->
+    <div class="mt-16 rounded-2xl p-8 lg:p-12 text-center" style="background: linear-gradient(135deg, rgba(30,64,175,0.4) 0%, rgba(56,189,248,0.15) 100%); border: 1px solid rgba(56,189,248,0.25);" data-aos="fade-up">
+      <h3 class="text-2xl lg:text-3xl font-bold font-heading text-textlight mb-4">
+        Pronto para transformar sua ideia em realidade?
+      </h3>
+      <p class="text-textsec mb-8 max-w-lg mx-auto">
+        Agende uma conversa gratuita com nosso time e descubra como podemos ajudar.
+      </p>
+      <a href="#contato" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base">
+        <i class="fa-solid fa-calendar-check"></i> Agendar conversa gratuita
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+     PORTFÓLIO / CASES
+===================================================== -->
+<section id="portfolio" class="py-24 px-6 lg:px-8 bg-primary">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">Cases de sucesso</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-textlight mb-4">
+        Projetos que <span class="text-accent">entregamos</span>
+      </h2>
+      <p class="text-textsec max-w-xl mx-auto text-lg">
+        Cada projeto é uma oportunidade de superar expectativas.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Projeto 1 -->
+      <div class="portfolio-card rounded-2xl" data-aos="fade-up" data-aos-delay="0">
+        <div class="relative h-52 overflow-hidden rounded-t-2xl" style="background: linear-gradient(135deg, #1E3A5F 0%, #0E7490 50%, #164E63 100%);">
+          <div class="overlay absolute inset-0 flex items-end p-6">
+            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-accent/20 text-accent border border-accent/30">React · Node.js · PostgreSQL</span>
+          </div>
+          <!-- Ícone decorativo -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
+            <i class="fa-solid fa-chart-bar text-8xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold font-heading text-textlight mb-2">Dashboard Analytics Pro</h3>
+          <p class="text-textsec text-sm leading-relaxed mb-5">Plataforma de análise de dados em tempo real para empresa de e-commerce com +500k usuários ativos.</p>
+          <button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold text-textsec border border-white/10 bg-white/5 cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> Ver detalhes — Em breve
+          </button>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="portfolio-card rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+        <div class="relative h-52 overflow-hidden rounded-t-2xl" style="background: linear-gradient(135deg, #3B1F6E 0%, #7C3AED 50%, #4F1FA0 100%);">
+          <div class="overlay absolute inset-0 flex items-end p-6">
+            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-accent/20 text-accent border border-accent/30">Flutter · Firebase · Dart</span>
+          </div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
+            <i class="fa-solid fa-mobile-screen-button text-8xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold font-heading text-textlight mb-2">FinanceApp Mobile</h3>
+          <p class="text-textsec text-sm leading-relaxed mb-5">Aplicativo de gestão financeira pessoal com OCR de faturas, metas e notificações inteligentes.</p>
+          <button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold text-textsec border border-white/10 bg-white/5 cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> Ver detalhes — Em breve
+          </button>
+        </div>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="portfolio-card rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative h-52 overflow-hidden rounded-t-2xl" style="background: linear-gradient(135deg, #064E3B 0%, #059669 50%, #065F46 100%);">
+          <div class="overlay absolute inset-0 flex items-end p-6">
+            <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-accent/20 text-accent border border-accent/30">Python · FastAPI · AWS</span>
+          </div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
+            <i class="fa-solid fa-robot text-8xl text-white"></i>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold font-heading text-textlight mb-2">LegalAI Platform</h3>
+          <p class="text-textsec text-sm leading-relaxed mb-5">Sistema de automação jurídica com IA para análise e geração de contratos com integrações a ERPs.</p>
+          <button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold text-textsec border border-white/10 bg-white/5 cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock text-xs"></i> Ver detalhes — Em breve
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-12" data-aos="fade-up">
+      <p class="text-textsec text-sm">Quer ver o que podemos fazer pelo seu projeto?</p>
+      <a href="#contato" class="btn-outline inline-flex items-center gap-2 mt-4 px-7 py-3 rounded-xl">
+        <i class="fa-solid fa-comment-dots"></i> Entre em contato
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+     TECNOLOGIAS — MARQUEE INFINITO
+===================================================== -->
+<section class="py-16 overflow-hidden" style="background: linear-gradient(180deg, #0A1628 0%, #0F1F3D 100%); border-top: 1px solid rgba(56,189,248,0.1); border-bottom: 1px solid rgba(56,189,248,0.1);">
+  <div class="text-center mb-10" data-aos="fade-up">
+    <p class="section-tag mb-2">Stack tecnológico</p>
+    <h2 class="text-2xl font-bold font-heading text-textlight">Tecnologias que dominamos</h2>
+  </div>
+
+  <!-- Faixa com máscara de fade nas bordas -->
+  <div class="relative">
+    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10" style="background: linear-gradient(90deg, #0F1F3D, transparent);"></div>
+    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10" style="background: linear-gradient(270deg, #0F1F3D, transparent);"></div>
+
+    <div class="relative overflow-hidden">
+      <div class="marquee-track" aria-label="Tecnologias utilizadas" role="list">
+        <!-- === conjunto 1 === -->
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-react text-2xl text-cyan-400"></i> React</div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-node-js text-2xl text-green-500"></i> Node.js</div>
+        <div class="tech-item" role="listitem"><i class="fa-solid fa-mobile text-2xl text-blue-400"></i> Flutter</div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-python text-2xl text-yellow-400"></i> Python</div>
+        <div class="tech-item" role="listitem"><i class="fa-solid fa-database text-2xl text-blue-500"></i> PostgreSQL</div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-aws text-2xl text-orange-400"></i> AWS</div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-docker text-2xl text-sky-400"></i> Docker</div>
+        <div class="tech-item" role="listitem">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 400 400" fill="none" aria-label="TypeScript" role="img">
+            <rect width="400" height="400" rx="50" fill="#3178C6"/>
+            <path d="M87.62 242.21v29.78c4.84 2.49 10.57 4.36 17.19 5.61 6.62 1.25 13.59 1.88 20.91 1.88 7.14 0 13.93-.68 20.37-2.03 6.44-1.36 12.09-3.63 16.94-6.82 4.85-3.19 8.72-7.38 11.59-12.59 2.88-5.2 4.32-11.55 4.32-19.02 0-5.47-.82-10.22-2.47-14.26-1.64-4.03-4.02-7.65-7.13-10.84-3.11-3.2-6.89-6.1-11.33-8.71-4.44-2.61-9.44-5.12-14.99-7.52-4.08-1.72-7.7-3.39-10.86-5.02-3.17-1.63-5.84-3.29-8-4.99-2.17-1.7-3.83-3.51-5-5.44-1.17-1.92-1.75-4.07-1.75-6.45 0-2.19.54-4.16 1.63-5.93 1.09-1.76 2.63-3.28 4.63-4.56 2-1.27 4.43-2.26 7.29-2.96 2.87-.7 6.06-1.05 9.57-1.05 2.54 0 5.19.18 7.95.54 2.77.36 5.56.93 8.38 1.7 2.82.77 5.58 1.74 8.28 2.91 2.7 1.17 5.26 2.55 7.67 4.13V167.6c-4.58-1.75-9.62-3.04-15.12-3.88-5.49-.84-11.77-1.26-18.83-1.26-7.07 0-13.79.77-20.17 2.31-6.37 1.54-12 3.93-16.87 7.17-4.87 3.24-8.74 7.43-11.62 12.58-2.88 5.15-4.32 11.28-4.32 18.39 0 9.1 2.65 16.9 7.96 23.39 5.31 6.49 13.47 12.08 24.5 16.77 4.25 1.73 8.16 3.44 11.73 5.12 3.58 1.68 6.65 3.43 9.22 5.25 2.57 1.82 4.59 3.79 6.05 5.91 1.46 2.12 2.19 4.53 2.19 7.23 0 2.11-.5 4.04-1.5 5.79-1 1.75-2.51 3.27-4.51 4.56-2 1.29-4.47 2.28-7.41 2.98-2.93.7-6.32 1.05-10.16 1.05-6.62 0-13.2-1.16-19.73-3.47-6.54-2.32-12.58-5.73-18.13-10.25zM314.66 136.35h-52.43v162.1h-33.11v-162.1h-52.37V108.5h137.91v27.85z" fill="white"/>
+          </svg> TypeScript
+        </div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-github text-2xl text-gray-300"></i> GitHub</div>
+        <div class="tech-item" role="listitem"><i class="fa-solid fa-layer-group text-2xl text-purple-400"></i> Next.js</div>
+        <div class="tech-item" role="listitem"><i class="fa-brands fa-linux text-2xl text-yellow-300"></i> Linux</div>
+
+        <!-- === conjunto 2 (duplicata para loop infinito) === -->
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-react text-2xl text-cyan-400"></i> React</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-node-js text-2xl text-green-500"></i> Node.js</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-solid fa-mobile text-2xl text-blue-400"></i> Flutter</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-python text-2xl text-yellow-400"></i> Python</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-solid fa-database text-2xl text-blue-500"></i> PostgreSQL</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-aws text-2xl text-orange-400"></i> AWS</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-docker text-2xl text-sky-400"></i> Docker</div>
+        <div class="tech-item" role="listitem" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+            <rect width="400" height="400" rx="50" fill="#3178C6"/>
+            <path d="M87.62 242.21v29.78c4.84 2.49 10.57 4.36 17.19 5.61 6.62 1.25 13.59 1.88 20.91 1.88 7.14 0 13.93-.68 20.37-2.03 6.44-1.36 12.09-3.63 16.94-6.82 4.85-3.19 8.72-7.38 11.59-12.59 2.88-5.2 4.32-11.55 4.32-19.02 0-5.47-.82-10.22-2.47-14.26-1.64-4.03-4.02-7.65-7.13-10.84-3.11-3.2-6.89-6.1-11.33-8.71-4.44-2.61-9.44-5.12-14.99-7.52-4.08-1.72-7.7-3.39-10.86-5.02-3.17-1.63-5.84-3.29-8-4.99-2.17-1.7-3.83-3.51-5-5.44-1.17-1.92-1.75-4.07-1.75-6.45 0-2.19.54-4.16 1.63-5.93 1.09-1.76 2.63-3.28 4.63-4.56 2-1.27 4.43-2.26 7.29-2.96 2.87-.7 6.06-1.05 9.57-1.05 2.54 0 5.19.18 7.95.54 2.77.36 5.56.93 8.38 1.7 2.82.77 5.58 1.74 8.28 2.91 2.7 1.17 5.26 2.55 7.67 4.13V167.6c-4.58-1.75-9.62-3.04-15.12-3.88-5.49-.84-11.77-1.26-18.83-1.26-7.07 0-13.79.77-20.17 2.31-6.37 1.54-12 3.93-16.87 7.17-4.87 3.24-8.74 7.43-11.62 12.58-2.88 5.15-4.32 11.28-4.32 18.39 0 9.1 2.65 16.9 7.96 23.39 5.31 6.49 13.47 12.08 24.5 16.77 4.25 1.73 8.16 3.44 11.73 5.12 3.58 1.68 6.65 3.43 9.22 5.25 2.57 1.82 4.59 3.79 6.05 5.91 1.46 2.12 2.19 4.53 2.19 7.23 0 2.11-.5 4.04-1.5 5.79-1 1.75-2.51 3.27-4.51 4.56-2 1.29-4.47 2.28-7.41 2.98-2.93.7-6.32 1.05-10.16 1.05-6.62 0-13.2-1.16-19.73-3.47-6.54-2.32-12.58-5.73-18.13-10.25zM314.66 136.35h-52.43v162.1h-33.11v-162.1h-52.37V108.5h137.91v27.85z" fill="white"/>
+          </svg> TypeScript
+        </div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-github text-2xl text-gray-300"></i> GitHub</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-solid fa-layer-group text-2xl text-purple-400"></i> Next.js</div>
+        <div class="tech-item" role="listitem" aria-hidden="true"><i class="fa-brands fa-linux text-2xl text-yellow-300"></i> Linux</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     CONTATO
+===================================================== -->
+<section id="contato" class="py-24 px-6 lg:px-8 bg-primary">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="section-tag mb-3">Contato</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-textlight mb-4">
+        Vamos <span class="text-accent">conversar?</span>
+      </h2>
+      <p class="text-textsec max-w-xl mx-auto text-lg">
+        Conte-nos sobre seu projeto e entraremos em contato em até 24h.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+      <!-- Formulário -->
+      <div data-aos="fade-right">
+        <form id="contact-form" novalidate class="space-y-5">
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-textsec mb-2">Nome completo *</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome"
+                class="form-input w-full rounded-xl px-4 py-3 text-sm" required />
+              <p class="err-msg hidden mt-1 text-xs text-red-400" id="err-name">Por favor, informe seu nome.</p>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-textsec mb-2">E-mail *</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com"
+                class="form-input w-full rounded-xl px-4 py-3 text-sm" required />
+              <p class="err-msg hidden mt-1 text-xs text-red-400" id="err-email">E-mail inválido.</p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="phone" class="block text-sm font-medium text-textsec mb-2">Telefone / WhatsApp</label>
+              <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999"
+                class="form-input w-full rounded-xl px-4 py-3 text-sm" />
+            </div>
+            <div>
+              <label for="project-type" class="block text-sm font-medium text-textsec mb-2">Tipo de projeto *</label>
+              <select id="project-type" name="project-type"
+                class="form-input w-full rounded-xl px-4 py-3 text-sm appearance-none" required>
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="web">Desenvolvimento Web</option>
+                <option value="mobile">Aplicativo Mobile</option>
+                <option value="api">APIs &amp; Integrações</option>
+                <option value="cloud">Cloud &amp; DevOps</option>
+                <option value="consulting">Consultoria de TI</option>
+                <option value="support">Manutenção &amp; Suporte</option>
+                <option value="other">Outro</option>
+              </select>
+              <p class="err-msg hidden mt-1 text-xs text-red-400" id="err-project">Selecione o tipo de projeto.</p>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-textsec mb-2">Mensagem *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Descreva brevemente seu projeto ou dúvida..."
+              class="form-input w-full rounded-xl px-4 py-3 text-sm resize-none" required></textarea>
+            <p class="err-msg hidden mt-1 text-xs text-red-400" id="err-message">Por favor, escreva uma mensagem.</p>
+          </div>
+
+          <button type="submit" id="submit-btn"
+            class="btn-primary w-full py-4 rounded-xl text-base flex items-center justify-center gap-3">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span id="btn-text">Enviar mensagem</span>
+            <span id="btn-spinner" class="hidden">
+              <i class="fa-solid fa-circle-notch animate-spin"></i>
+            </span>
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Informações de contato -->
+      <div class="space-y-8" data-aos="fade-left" data-aos-delay="150">
+
+        <div>
+          <h3 class="text-xl font-bold font-heading text-textlight mb-2">Fale diretamente conosco</h3>
+          <p class="text-textsec text-sm leading-relaxed">
+            Estamos disponíveis para tirar suas dúvidas, apresentar nossa proposta ou simplesmente bater um papo sobre tecnologia.
+          </p>
+        </div>
+
+        <!-- Contatos lista -->
+        <div class="space-y-5">
+
+          <a href="mailto:contato@exosoft.com.br"
+            class="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
+              <i class="fa-solid fa-envelope text-accent text-lg"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textsec font-medium mb-0.5">E-mail</p>
+              <p class="text-textlight font-semibold text-sm">contato@exosoft.com.br</p>
+            </div>
+          </a>
+
+          <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Exosoft." target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
+              <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textsec font-medium mb-0.5">WhatsApp</p>
+              <p class="text-textlight font-semibold text-sm">+55 (11) 99999-9999</p>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/company/exosoft" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
+              <i class="fa-brands fa-linkedin-in text-blue-400 text-lg"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textsec font-medium mb-0.5">LinkedIn</p>
+              <p class="text-textlight font-semibold text-sm">linkedin.com/company/exosoft</p>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-location-dot text-accent text-lg"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textsec font-medium mb-0.5">Localização</p>
+              <p class="text-textlight font-semibold text-sm">Brasil 🇧🇷 — Atendimento remoto</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Horário -->
+        <div class="p-5 rounded-2xl" style="background: rgba(56,189,248,0.06); border: 1px solid rgba(56,189,248,0.2);">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fa-solid fa-clock text-accent"></i>
+            <span class="text-textlight font-semibold text-sm">Horário de atendimento</span>
+          </div>
+          <p class="text-textsec text-sm">Segunda a Sexta: 9h às 18h</p>
+          <p class="text-textsec text-sm">Respondemos e-mails em até <strong class="text-accent">24 horas</strong>.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+     FOOTER
+===================================================== -->
+<footer class="border-t border-white/10" style="background: #080F1E;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-12">
+
+      <!-- Coluna Logo + Slogan -->
+      <div class="col-span-2 lg:col-span-2">
+        <a href="#inicio" class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white font-bold text-sm font-heading">
+            <span>&lt;/&gt;</span>
+          </div>
+          <span class="text-xl font-bold font-heading text-textlight">Exo<span class="text-accent">soft</span></span>
+        </a>
+        <p class="text-textsec text-sm leading-relaxed max-w-xs mb-6">
+          Exosoft — Código que transforma negócios.<br/>
+          Desenvolvemos software de alta qualidade para empresas que querem resultados reais.
+        </p>
+        <!-- Redes sociais -->
+        <div class="flex items-center gap-3">
+          <a href="https://linkedin.com/company/exosoft" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-textsec hover:text-accent hover:border-accent/40 transition-all">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://github.com/exosoft" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-textsec hover:text-accent hover:border-accent/40 transition-all">
+            <i class="fa-brands fa-github text-sm"></i>
+          </a>
+          <a href="https://instagram.com/exosoft" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-textsec hover:text-accent hover:border-accent/40 transition-all">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna: Empresa -->
+      <div>
+        <h4 class="text-textlight font-semibold font-heading text-sm mb-5">Empresa</h4>
+        <ul class="space-y-3">
+          <li><a href="#sobre"    class="footer-link hover:text-accent transition-colors">Sobre nós</a></li>
+          <li><a href="#portfolio" class="footer-link hover:text-accent transition-colors">Portfólio</a></li>
+          <li><a href="#contato"  class="footer-link hover:text-accent transition-colors">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna: Serviços -->
+      <div>
+        <h4 class="text-textlight font-semibold font-heading text-sm mb-5">Serviços</h4>
+        <ul class="space-y-3">
+          <li><a href="#servicos" class="footer-link hover:text-accent transition-colors">Dev. Web</a></li>
+          <li><a href="#servicos" class="footer-link hover:text-accent transition-colors">Apps Mobile</a></li>
+          <li><a href="#servicos" class="footer-link hover:text-accent transition-colors">APIs & Integrações</a></li>
+          <li><a href="#servicos" class="footer-link hover:text-accent transition-colors">Cloud & DevOps</a></li>
+          <li><a href="#servicos" class="footer-link hover:text-accent transition-colors">Consultoria de TI</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna: Contato rápido -->
+      <div>
+        <h4 class="text-textlight font-semibold font-heading text-sm mb-5">Contato</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 text-textsec text-sm">
+            <i class="fa-solid fa-envelope mt-0.5 text-accent text-xs flex-shrink-0"></i>
+            <a href="mailto:contato@exosoft.com.br" class="footer-link hover:text-accent transition-colors break-all">contato@exosoft.com.br</a>
+          </li>
+          <li class="flex items-start gap-2 text-textsec text-sm">
+            <i class="fa-brands fa-whatsapp mt-0.5 text-green-400 text-xs flex-shrink-0"></i>
+            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="footer-link hover:text-accent transition-colors">+55 (11) 99999-9999</a>
+          </li>
+          <li class="flex items-start gap-2 text-textsec text-sm">
+            <i class="fa-solid fa-location-dot mt-0.5 text-accent text-xs flex-shrink-0"></i>
+            <span>Brasil 🇧🇷</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Linha divisória -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-textsec text-sm">© 2025 Exosoft. Todos os direitos reservados.</p>
+      <p class="text-textsec text-sm">Desenvolvido com ❤️ pela Exosoft</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ====================================================
+     TOAST NOTIFICATION
+===================================================== -->
+<div id="toast" role="alert" aria-live="polite" aria-atomic="true">
+  <i id="toast-icon" class="fa-solid fa-check-circle"></i>
+  <span id="toast-msg">Mensagem enviada!</span>
+</div>
+
+
+<!-- ====================================================
+     JAVASCRIPT
+===================================================== -->
+<script>
+// ==========================================
+// 1. INICIALIZAÇÃO AOS
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init({
+    duration: 800,
+    offset: 100,
+    once: true,
+    easing: 'ease-out-cubic',
+  });
+});
+
+
+// ==========================================
+// 2. NAVBAR — scroll effect
+// ==========================================
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+
+// ==========================================
+// 3. MENU HAMBURGUER
+// ==========================================
+const menuBtn  = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const hamLines = document.querySelectorAll('.ham-line');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+let menuOpen = false;
+
+function toggleMenu(forceClose = false) {
+  menuOpen = forceClose ? false : !menuOpen;
+  menuBtn.setAttribute('aria-expanded', menuOpen);
+
+  if (menuOpen) {
+    mobileMenu.classList.add('open');
+    hamLines[0].style.transform = 'translateY(8px) rotate(45deg)';
+    hamLines[1].style.opacity   = '0';
+    hamLines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+  } else {
+    mobileMenu.classList.remove('open');
+    hamLines[0].style.transform = '';
+    hamLines[1].style.opacity   = '';
+    hamLines[2].style.transform = '';
+  }
+}
+
+menuBtn.addEventListener('click', () => toggleMenu());
+mobileLinks.forEach(link => link.addEventListener('click', () => toggleMenu(true)));
+
+
+// ==========================================
+// 4. TYPEWRITER EFFECT
+// ==========================================
+const typewriterEl = document.getElementById('tw-content');
+const phrases = [
+  'Desenvolvimento Web',
+  'Apps Mobile',
+  'APIs & Integrações',
+  'Cloud & DevOps',
+];
+
+let phraseIdx = 0;
+let charIdx   = 0;
+let isDeleting = false;
+let twTimeout;
+
+function typeWrite() {
+  const current = phrases[phraseIdx];
+
+  if (isDeleting) {
+    charIdx--;
+  } else {
+    charIdx++;
+  }
+
+  typewriterEl.textContent = current.substring(0, charIdx);
+
+  let delay = isDeleting ? 60 : 90;
+
+  if (!isDeleting && charIdx === current.length) {
+    // Pausa no fim
+    delay = 1800;
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    phraseIdx = (phraseIdx + 1) % phrases.length;
+    delay = 400;
+  }
+
+  twTimeout = setTimeout(typeWrite, delay);
+}
+
+// Inicia o typewriter após 1s
+setTimeout(typeWrite, 1000);
+
+
+// ==========================================
+// 5. COUNTUP — Intersection Observer
+// ==========================================
+const countupEls = document.querySelectorAll('.countup');
+let countupDone  = false;
+
+function animateCountUp(el) {
+  const target   = parseInt(el.dataset.target, 10);
+  const duration = 1800;
+  const stepTime = Math.max(Math.floor(duration / target), 16);
+  let current    = 0;
+
+  const timer = setInterval(() => {
+    // easing: quadratic ease-out
+    current += Math.ceil((target - current) / 6);
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = current;
+  }, stepTime);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !countupDone) {
+      countupDone = true;
+      countupEls.forEach(el => animateCountUp(el));
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.4 });
+
+const statsSection = document.getElementById('stats-section');
+if (statsSection) statsObserver.observe(statsSection);
+
+
+// ==========================================
+// 6. FORMULÁRIO — validação e submit
+// ==========================================
+const form       = document.getElementById('contact-form');
+const submitBtn  = document.getElementById('submit-btn');
+const btnText    = document.getElementById('btn-text');
+const btnSpinner = document.getElementById('btn-spinner');
+
+// Helpers
+function showError(inputId, errId) {
+  const input = document.getElementById(inputId);
+  const err   = document.getElementById(errId);
+  if (input) input.classList.add('border-red-500');
+  if (err)   err.classList.remove('hidden');
+}
+function clearError(inputId, errId) {
+  const input = document.getElementById(inputId);
+  const err   = document.getElementById(errId);
+  if (input) input.classList.remove('border-red-500');
+  if (err)   err.classList.add('hidden');
+}
+
+// Live validation
+['name','email','project-type','message'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', () => {
+    const errId = 'err-' + (id === 'project-type' ? 'project' : id);
+    clearError(id, errId);
+  });
+  el.addEventListener('change', () => {
+    const errId = 'err-' + (id === 'project-type' ? 'project' : id);
+    clearError(id, errId);
+  });
+});
+
+function validateForm() {
+  let valid = true;
+  const name    = document.getElementById('name').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const project = document.getElementById('project-type').value;
+  const message = document.getElementById('message').value.trim();
+
+  // Limpar todos
+  clearError('name', 'err-name');
+  clearError('email', 'err-email');
+  clearError('project-type', 'err-project');
+  clearError('message', 'err-message');
+
+  if (name.length < 2) {
+    showError('name', 'err-name');
+    valid = false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showError('email', 'err-email');
+    valid = false;
+  }
+
+  if (!project) {
+    showError('project-type', 'err-project');
+    valid = false;
+  }
+
+  if (message.length < 10) {
+    showError('message', 'err-message');
+    valid = false;
+  }
+
+  return valid;
+}
+
+// Toast helper
+function showToast(type, msg) {
+  const toast    = document.getElementById('toast');
+  const toastMsg = document.getElementById('toast-msg');
+  const toastIcon = document.getElementById('toast-icon');
+
+  toast.className = '';  // limpa classes
+  toast.classList.add(type);
+  toastMsg.textContent = msg;
+  toastIcon.className = type === 'success'
+    ? 'fa-solid fa-circle-check'
+    : 'fa-solid fa-circle-xmark';
+
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
+}
+
+// Submit handler
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+
+  // UI: loading
+  submitBtn.disabled = true;
+  btnText.textContent = 'Enviando...';
+  btnSpinner.classList.remove('hidden');
+
+  // Simula envio (substitua pela sua integração real — Formspree, EmailJS, etc.)
+  await new Promise(resolve => setTimeout(resolve, 1800));
+
+  // Sucesso
+  submitBtn.disabled = false;
+  btnText.textContent = 'Enviar mensagem';
+  btnSpinner.classList.add('hidden');
+  form.reset();
+
+  showToast('success', '✅ Mensagem enviada! Retornaremos em até 24h.');
+});
+
+
+// ==========================================
+// 7. SMOOTH SCROLL — links âncora
+// ==========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const offset = 70; // altura da navbar
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+
+// ==========================================
+// 8. ACTIVE NAV LINK — highlight ao scroll
+// ==========================================
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('header nav a[href^="#"]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove('text-accent');
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.classList.add('text-accent');
+        }
+      });
+    }
+  });
+}, { threshold: 0.35, rootMargin: '-70px 0px -35% 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+</script>
+
+<!-- ====================================================
+     DEPLOY REMINDER:
+     Criar arquivo CNAME na raiz do repositório com o conteúdo:
+     exosoft.com.br
+===================================================== -->
+</body>
+</html>
